@@ -1,0 +1,103 @@
+import java.util.*;
+
+public class CollegeList{
+  static Employee employee = new Employee();
+  static Person person = new Person();
+  static Faculty faculty = new Faculty();
+  static Student student = new Student();
+  static Scanner scanner = new Scanner(System.in);
+
+  public static void main(String[] args) {
+    System.out.print("Type E for employee\nType F for faculty\nType S for student\nChoice: ");
+    String choice = scanner.nextLine();
+    System.out.print("Enter your name: ");
+    String name = scanner.nextLine();
+    System.out.print("Enter your contact number: ");
+    String contactNumber = scanner.nextLine();
+    person.setName(name);
+    person.setContactNum(contactNumber);
+
+    if(choice.equalsIgnoreCase("e")){
+      askEmployee();
+    }else if(choice.equalsIgnoreCase("f")){
+      askFaculty();
+    }else if(choice.equalsIgnoreCase("s")){
+      askStudent();
+    }else{
+      System.out.println("Invalid choice");
+    }
+  }
+  private static void askEmployee(){
+    System.out.print("Enter monthly salary: ");
+    int monthlySalary = scanner.nextInt();
+    scanner.nextLine();
+    System.out.print("Enter department: ");
+    String department = scanner.nextLine();
+    employee.setDepartment(department);
+    
+    employee.setSalary(monthlySalary);
+    System.out.println("\nName: " + person.getName());
+    System.out.println("Contact Number: " + person.getContactNum());
+    System.out.println("Monthly Salary: " + employee.getSalary());
+    System.out.println("Department: " + employee.getDepartment());
+  }
+
+  private static void askFaculty(){
+    System.out.print("Enter monthly salary: ");
+    int monthlySalary = scanner.nextInt();
+    employee.setSalary(monthlySalary);
+    scanner.nextLine();
+    System.out.print("Enter department: ");
+    String department = scanner.nextLine();
+    employee.setDepartment(department);
+    System.out.print("Are you a regular employee? Type Y if yes and type N if no\nChoice: ");
+    String choice = scanner.nextLine();
+
+    if(choice.equalsIgnoreCase("Y")){
+      faculty.setStatus(true);
+    }else if(choice.equalsIgnoreCase("N")){
+      faculty.setStatus(false);
+    }else{
+      System.out.println("Invalid Choice");
+    }
+
+    String facultyRegulars = department == "CITE" ? "IT SIYA" : "dili siya IT";
+
+
+    if(department == "CITE"){
+       facultyRegulars = "IT SIYA";
+    }else{
+      facultyRegulars = "dili siya IT";
+    }
+
+    
+    // one line if else 
+    String facultyRegular = faculty.getStatus() == true  ? "Regular" : "not Regular";
+    String facultyRegularss = faculty.getStatus() ? "Regular" : "not Regular";
+
+    
+    String facultyRegular3 = !faculty.getStatus() ? "Regular" : "not Regular";
+    String facultyRegular33 = faculty.getStatus() == false  ? "Regular" : "not Regular";
+    
+    System.out.println("\nName: " + person.getName());
+    System.out.println("Contact Number: " + person.getContactNum());
+    System.out.println("Monthly Salary: " + employee.getSalary());
+    System.out.println("Department: " + employee.getDepartment());
+    System.out.println("Regular employee: " + facultyRegular);
+  }
+
+  private static void askStudent(){
+    System.out.print("Enter enrolled program: ");
+    String enrolledProgram = scanner.nextLine();
+    student.setProgram(enrolledProgram);
+    System.out.print("Enter year level (1-4): ");
+    int yearLevel = scanner.nextInt();
+    scanner.nextLine();
+    student.setYearLevel(yearLevel);
+    System.out.println("\nName: " + person.getName());
+    System.out.println("Contact Number: " + person.getContactNum());
+    System.out.println("Enrolled Program: " + student.getProgram());
+    System.out.println("Year Level: " + student.getYearLevel());
+  }
+
+}
