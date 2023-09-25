@@ -1,0 +1,20 @@
+public class Employee {
+
+  //this.variable
+  private int salary;
+  private String department;
+
+  public int getSalary() {
+    return this.salary;
+  }
+  public void setSalary(int salary) {
+    this.salary = salary;
+  }
+  public String getDepartment() {
+    return this.department;
+  }
+  public void setDepartment(String department) {
+    this.department = department;
+  }
+
+}
